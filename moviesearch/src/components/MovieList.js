@@ -1,6 +1,8 @@
 import React from 'react';
+import Movie from './Movie';
 
 const MovieList = (props) => {
+  console.log('props form mL: ', props.movies)
 return (
 
   <div className="container">
@@ -8,8 +10,8 @@ return (
       <div className="col s12">
       <ul>
         {
-          props.movies.map(movie => {
-            return <li>{movie.title}</li>
+          props.movies.map((movie, i) => {
+            return <Movie key={i} movie={movie} />
           })
 
         }
