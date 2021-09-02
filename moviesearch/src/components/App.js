@@ -86,7 +86,7 @@ class App extends React.Component {
       <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo} />
       }
       {
-        this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage} />
+        this.state.totalResults > 20 && this.state.currentMovie === null ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage} />
           : ''
       }
     </div>
