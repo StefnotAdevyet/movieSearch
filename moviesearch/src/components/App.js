@@ -5,7 +5,7 @@ import Search from './Search';
 import MovieList from './MovieList';
 import axios from 'axios';
 import Pagination from './Pagination';
-import MovieInfo from './MovieInfo'
+import MovieInfo from './MovieInfo';
 
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
       currentPage: 1,
       currentMovie: null
     }
-    this.apiKey = 'b1a0a71e617a699ee81d319a065ed9ca'
+    this.apiKey = process.env.REACT_APP_API
 
   }
 
