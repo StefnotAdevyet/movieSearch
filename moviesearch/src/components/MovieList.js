@@ -2,7 +2,7 @@ import React from 'react';
 import Movie from './Movie';
 
 const MovieList = (props) => {
-  console.log('props form mL: ', props.movies)
+  //console.log('props form mL: ', props.movies)
 return (
 
   <div className="container">
