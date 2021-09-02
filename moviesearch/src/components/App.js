@@ -61,7 +61,10 @@ class App extends React.Component {
       <Nav />
       <Search handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
       <MovieList movies={this.state.movies} />
-      <Pagination />
+      {
+        this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage}/>
+        : ''
+      }
     </div>
 
   );
