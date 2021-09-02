@@ -2,6 +2,7 @@ import '../App.css';
 import React from 'react';
 import Nav from './Nav';
 import Search from './Search';
+import MovieList from './MovieList';
 import axios from 'axios';
 
 
@@ -10,7 +11,10 @@ class App extends React.Component {
     super();
     this.state = {
       movies: [],
-      searchTerm: ''
+      searchTerm: '',
+      totalResults: 0,
+      currentPage: 1,
+      currentMovie: null
     }
     this.apiKey = 'b1a0a71e617a699ee81d319a065ed9ca'
 
