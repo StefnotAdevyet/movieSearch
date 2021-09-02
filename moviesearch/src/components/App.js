@@ -5,6 +5,7 @@ import Search from './Search';
 import MovieList from './MovieList';
 import axios from 'axios';
 import Pagination from './Pagination';
+import MovieInfo from './MovieInfo'
 
 
 class App extends React.Component {
@@ -51,6 +52,22 @@ class App extends React.Component {
           )
   }
 
+  viewDetails = (id) => {
+    const filteredMovie = this.state.movies.filter(movie => movie.id === id)
+
+    const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null;
+
+    this.setState({
+      currentMovie: filteredMovie
+    })
+  }
+
+  closeMovieInfo = () => {
+    this.setState({
+      currentMovie: null
+    })
+  }
+
   render() {
 
     const numberPages = Math.floor(this.state.totalResults / 20);
@@ -59,11 +76,18 @@ class App extends React.Component {
 
     <div className="App">
       <Nav />
-      <Search handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-      <MovieList movies={this.state.movies} />
+      {this.state.currentMovie == null ?
+      <div>
+
+        <Search handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+        <MovieList viewDetails={this.viewDetails} movies={this.state.movies} />
+      </div>
+      :
+      <MovieInfo closeMovieInfo={this.closeMovieInfo} />
+      }
       {
-        this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage}/>
-        : ''
+        this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage} />
+          : ''
       }
     </div>
 
