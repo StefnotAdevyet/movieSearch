@@ -11,7 +11,7 @@ return (
       <ul>
         {
           props.movies.map((movie, i) => {
-            return <Movie key={i} movie={movie} />
+            return <Movie key={i} image={movie.poster_path} movie={movie} />
           })
 
         }
