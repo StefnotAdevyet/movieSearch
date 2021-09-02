@@ -12,15 +12,26 @@ class App extends React.Component {
       movies: [],
       searchTerm: ''
     }
-    this.apiKey = process.env.APP_API
+    this.apiKey = 'b1a0a71e617a699ee81d319a065ed9ca'
+
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.searchTerm}`)
+         .then((res) => {
+           this.setState({
+           movies: res.data.results
+          })
+        }
+          )
 
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
+    this.setState({
+      searchTerm: e.target.value
+    })
   }
 
   render() {
