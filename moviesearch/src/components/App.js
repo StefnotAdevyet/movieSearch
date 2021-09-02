@@ -58,7 +58,7 @@ class App extends React.Component {
     const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null;
 
     this.setState({
-      currentMovie: filteredMovie
+      currentMovie: newCurrentMovie
     })
   }
 
@@ -83,7 +83,7 @@ class App extends React.Component {
         <MovieList viewDetails={this.viewDetails} movies={this.state.movies} />
       </div>
       :
-      <MovieInfo closeMovieInfo={this.closeMovieInfo} />
+      <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo} />
       }
       {
         this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.state.currentPage} />
